@@ -10,3 +10,4 @@
 * https://medium.com/createdd-notes/starting-with-authentication-a-tutorial-with-node-js-and-mongodb-25d524ca0359
 
 M3Node123???
+mongodb+srv://admin:<password>@databasecluster-tgxhv.mongodb.net/test?retryWrites=true
