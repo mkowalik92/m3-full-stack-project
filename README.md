@@ -7,3 +7,4 @@
 * https://ciphertrick.com/2016/01/18/salt-hash-passwords-using-nodejs-crypto/
 * https://stackoverflow.com/questions/42558090/how-to-create-html-table-based-on-json
 * https://blog.risingstack.com/getting-node-js-testing-and-tdd-right-node-js-at-scale/
+* https://medium.com/createdd-notes/starting-with-authentication-a-tutorial-with-node-js-and-mongodb-25d524ca0359
