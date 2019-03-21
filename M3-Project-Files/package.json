@@ -5,9 +5,10 @@
   "main": "",
   "scripts": {
     "start": "node src/server.js",
-    "start-nodemon": "nodemon src/server.js"
+    "start-nodemon": "nodemon src/server.js",
+	"start-mongodb": "node src/mongodb",
     "test": "mocha lib/**/**.spec.js"
-  },
+  },	
   "keywords": [],
   "author": "",
   "license": "ISC",
