@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/server.js",
     "start-nodemon": "nodemon src/server.js",
-    "start-mongodb": "node src/mongodb",
+    "start-mongodb": "node src/mongodb.js",
     "test": "mocha lib/**/**.spec.js"
   },	
   "keywords": [],
