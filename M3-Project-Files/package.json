@@ -7,7 +7,7 @@
     "start": "node src/server.js",
     "start-nodemon": "nodemon src/server.js",
     "start-mongodb": "node src/mongodb.js",
-    "test-catalog": "mocha src/tests/test-catalog.js"
+    "test-catalog": "mocha tests/test-catalog.js"
   },
   "keywords": [],
   "author": "",
