@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-const product = require('./routes/product');
+const product = require('../routes/product');
 
 mongoose.connect("mongodb+srv://admin:M3Node123@databasecluster-tgxhv.mongodb.net/test?retryWrites=true", { useNewUrlParser: true})
 mongoose.set('useCreateIndex', true);
