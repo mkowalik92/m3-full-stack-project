@@ -14,10 +14,14 @@ db.on('error', 	console.error.bind(console, 'connection error:'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use('/products', product);
+app.use('/', product);
 
-var port = 1234;
 
-app.listen(port, () => {
-	console.log('Server is running on port ' + port);
+const port = 1234;
+
+const server = app.listen(port, function (){	
+	const host = server.address().address;
+	const port = server.address().port;
 });
+
+module.exports = server;

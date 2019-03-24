@@ -1,6 +1,8 @@
+
 const mongoose = require('mongoose');
 
 const itemSchema = new mongoose.Schema({
+	_id: mongoose.Schema.Types.ObjectId,
 	sku: {
 		type: String,
 		unique: true,
@@ -16,7 +18,7 @@ const itemSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	category: {
+	catagory: {
 		type: String,
 		required: true
 	},
@@ -30,11 +32,6 @@ const itemSchema = new mongoose.Schema({
 			message: props => `${props.value} is not a valid price`
 		},
 	},
-	id: {
-		type: Number,
-		required: true,
-		min: 0
-	},
 	quantity: {
 		type: Number,
 		required: true,
@@ -42,5 +39,5 @@ const itemSchema = new mongoose.Schema({
 	}
 });
 
-const Product = mongoose.model('Item', itemSchema);
+const Product = mongoose.model('products', itemSchema);
 module.exports = Product;
