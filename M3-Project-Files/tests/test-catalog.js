@@ -12,6 +12,8 @@ chai.use(chaiHttp)
 
 describe('RESTful Verbs', function(){
 	
+	Product.collection.drop();
+	
 	beforeEach(function(done){
 		let newProduct = new Product({
 			_id: new mongoose.Types.ObjectId(),
@@ -29,7 +31,7 @@ describe('RESTful Verbs', function(){
 	
 	afterEach(function(done){
 		Product.collection.drop();
-		done();;
+		done();
 	});
 	
 	it('Should list all existing products from MongoDB database on /products GET request', function(done) {
@@ -111,15 +113,42 @@ describe('RESTful Verbs', function(){
 	}); 
 	
 	it('Should update product from MongoDB database on /product/<id> PUT request', function(done) {
-		let updatedProduct = new Product({
-			sku: 'KS944RUR',
-			name: 'Xbox 360',
+		let newProduct = new Product({
+			_id: new mongoose.Types.ObjectId(),
+			sku: 'NEWPRODU',
+			name: 'Wii U',
 			catagory: 'Technology',
 			price: 109.99,
-			quantity: 5
+			quantity: 3
 		});
 		
-		chai.request(mongodb)
+		newProduct.save(function(err, newProduct){
+			chai.request(mongodb)
+				.put('/product/' + newProduct._id)
+				.send({
+					sku: 'NEWPRODU',
+					name: 'Wii U',
+					catagory: 'Technology',
+					price: 99.99,
+					quantity: 3 
+				})
+				.end(function(err, res){
+					res.should.have.status(200);
+					res.should.be.json;
+						
+					res.body.should.have.property('UPDATED');
+					res.body.UPDATED.should.have.property('name');
+					res.body.UPDATED.should.have.property('catagory');
+					res.body.UPDATED.should.have.property('quantity');
+					res.body.UPDATED.should.have.property('_id');
+					
+					res.body.UPDATED.name.should.equal('Wii U');
+					res.body.UPDATED.price.should.equal('99.99');
+						
+					done();
+				});
+		});
+/* 		chai.request(mongodb)
 			.get('/products')
 			.end(function(err, res){
 				chai.request(mongodb)
@@ -141,7 +170,7 @@ describe('RESTful Verbs', function(){
 						
 						done();
 					});
-			});
+			}); */
 	});
 	
 	it('Should remove product from MongoDB database on /product/<id> DELETE request', function(done) {
